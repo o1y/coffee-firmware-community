@@ -1,0 +1,79 @@
+name: Installation or update problem
+description: Installing, updating or going back to the original firmware didn't work.
+labels: ["install"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This tracker is only for the unofficial community firmware.** For the original firmware, a hardware fault or a warranty question, please contact your dealer.
+
+        If you photograph the activation screen, cover the QR code.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you start
+      options:
+        - label: It is an EU Primus (not a Slim, and not from another region).
+          required: true
+        - label: I searched the existing issues and this hasn't been reported yet.
+          required: true
+
+  - type: dropdown
+    id: doing
+    attributes:
+      label: What were you doing?
+      options:
+        - Installing the community firmware for the first time
+        - Updating the community firmware over Wi-Fi
+        - Going back to the original firmware
+        - Something else
+    validations:
+      required: true
+
+  - type: dropdown
+    id: state
+    attributes:
+      label: What is the machine running now?
+      options:
+        - The community firmware
+        - The original firmware
+        - Nothing, it's stuck or won't start
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: original-version
+    attributes:
+      label: Original firmware version
+      description: The version the machine had before, if you know it.
+      placeholder: "1.2.8"
+
+  - type: input
+    id: version
+    attributes:
+      label: Community firmware version
+      description: If the machine has run it, the version shown next to "Software update" in its menu.
+      placeholder: "0.12.2"
+
+  - type: input
+    id: step
+    attributes:
+      label: Installation guide step
+      description: Which step were you on when it went wrong?
+      placeholder: "Step 3"
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, and what did the screen show?
+    validations:
+      required: true
+
+  - type: textarea
+    id: photos
+    attributes:
+      label: Photos or video
+      description: Drag a photo of the screen in here. It is often the most useful thing you can attach.

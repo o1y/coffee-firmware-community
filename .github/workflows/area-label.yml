@@ -1,0 +1,38 @@
+name: Area label
+
+# Labels a new bug report from its Area dropdown: "Water & tank" becomes
+# "area: water & tank". Only on `opened` — after that the label is yours to
+# correct, and a reporter editing their text shouldn't undo it.
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      # The issue body is untrusted text. It is read here as data inside the
+      # script; never move it into a `run:` step as ${{ github.event.issue.body }},
+      # which would execute whatever a reporter typed.
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body ?? "";
+            const match = body.match(/^### Area\s*\n+([^\n]+)/m);
+            if (!match) return;
+            const name = `area: ${match[1].trim().toLowerCase()}`;
+            // Only labels scripts/labels.sh made. addLabels would otherwise
+            // create one for whatever text the match picked up.
+            try {
+              await github.rest.issues.getLabel({ ...context.repo, name });
+            } catch {
+              return;
+            }
+            await github.rest.issues.addLabels({
+              ...context.repo,
+              issue_number: context.issue.number,
+              labels: [name],
+            });

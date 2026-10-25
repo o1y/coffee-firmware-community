@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ideas and questions
+    url: https://github.com/o1y/coffee-firmware-community/discussions
+    about: Feature ideas and how-to questions go in Discussions, not issues.
+  - name: Getting the firmware
+    url: https://github.com/o1y/coffee-firmware-community#getting-the-firmware
+    about: The firmware isn't available to the public yet.
+  - name: Original firmware, hardware or warranty
+    url: https://github.com/o1y/coffee-firmware-community#is-this-the-right-place
+    about: Not handled here. Please contact your dealer.
+  - name: Security problem
+    url: https://github.com/o1y/coffee-firmware-community/security/advisories/new
+    about: Report it privately instead of opening a public issue.
+  - name: Discord
+    url: https://discord.gg/yDgpq5sf87
+    about: Chat with other owners.

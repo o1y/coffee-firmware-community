@@ -1,0 +1,109 @@
+name: Bug report
+description: Something on the community firmware doesn't work as it should.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This tracker is only for the unofficial community firmware.** For the original firmware, a hardware fault or a warranty question, please contact your dealer.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you start
+      options:
+        - label: My machine runs the community firmware, not the original firmware.
+          required: true
+        - label: It is an EU Primus (not a Slim, and not from another region).
+          required: true
+        - label: I searched the existing issues and this hasn't been reported yet.
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Firmware version
+      description: Shown next to "Software update" in the machine's menu.
+      placeholder: "0.12.2"
+    validations:
+      required: true
+
+  # Keep in step with the `area: …` labels in scripts/labels.sh — the
+  # area-label workflow applies "area: " + the chosen value, lowercased.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Where did it happen?
+      options:
+        - Brewing
+        - Steam
+        - Hot water
+        - Heating up
+        - Water & tank
+        - Scale
+        - Wi-Fi
+        - Screen & touch
+        - Sleep & auto-off
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: power-mode
+    attributes:
+      label: Power Mode
+      description: Set in the maintenance menu (tap the gear icon while the machine starts up). If you never changed it, it is 10 A.
+      options:
+        - 10 A (default)
+        - 13 A or more
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: scale
+    attributes:
+      label: Scale
+      description: Which Bluetooth scale was connected, if any?
+      options:
+        - No scale
+        - Acaia
+        - Bookoo
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did the machine do, and what did you expect it to do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: If you can make it happen again, how?
+      placeholder: |
+        1. Heat up the machine
+        2. Choose the profile …
+        3. …
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does it happen?
+      options:
+        - Every time
+        - Sometimes
+        - Once so far
+    validations:
+      required: true
+
+  - type: textarea
+    id: photos
+    attributes:
+      label: Photos or video
+      description: Drag a photo of the screen in here. It is often the most useful thing you can attach.

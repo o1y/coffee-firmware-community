@@ -1,0 +1,74 @@
+name: Shot problem
+description: A shot didn't run the way its profile says it should.
+labels: ["shot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This tracker is only for the unofficial community firmware.** For the original firmware, a hardware fault or a warranty question, please contact your dealer.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you start
+      options:
+        - label: My machine runs the community firmware, not the original firmware.
+          required: true
+        - label: It is an EU Primus (not a Slim, and not from another region).
+          required: true
+        - label: I searched the existing issues and this hasn't been reported yet.
+          required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Firmware version
+      description: Shown next to "Software update" in the machine's menu.
+      placeholder: "0.12.2"
+    validations:
+      required: true
+
+  - type: input
+    id: shot-link
+    attributes:
+      label: Shared shot
+      description: Open the shot under Shots, tap the paper-plane icon, then Send (this needs Wi-Fi). Scan the QR code with your phone and paste the address of the page it opens. The page carries nothing that identifies your machine.
+    validations:
+      required: true
+
+  - type: input
+    id: recipe
+    attributes:
+      label: Dose, yield and grind
+      placeholder: "18 g in, 36 g out, grinder X at 12"
+
+  - type: dropdown
+    id: scale
+    attributes:
+      label: Scale
+      description: Which Bluetooth scale was connected, if any?
+      options:
+        - No scale
+        - Acaia
+        - Bookoo
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What looked wrong?
+      description: For example, the pressure overshot, the flow never reached its target, or the shot stopped early. If you changed the profile or drew your own curve, describe what you changed.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does it happen?
+      options:
+        - Every shot with this profile
+        - Some shots
+        - Once so far
+    validations:
+      required: true
